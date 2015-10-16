@@ -12,11 +12,11 @@ module.exports = {
 
     find: function(req, res) {
         var p = req.param('p');
-        if (p === null) {
+        if (p === null||p===undefined) {
             p = 1;
         }
         request.get({
-            url: 'http://entretenimento.band.uol.com.br/paniconaband/videos.asp'
+            url: 'http://entretenimento.band.uol.com.br/paniconaband/videos.asp?p='+p
         }, function(err, httpResponse, body) {
             $ = cheerio.load(body);
             var obj = {};
